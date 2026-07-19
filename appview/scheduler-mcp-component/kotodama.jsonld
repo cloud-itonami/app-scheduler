@@ -1,0 +1,33 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:scheduler.etzhayyim.com",
+  "name": "scheduler",
+  "nanoid": "sc3dul3r",
+  "project": "scheduler",
+  "runtimeType": "worker",
+  "performerType": "service",
+  "uiType": "yoro",
+  "accent": "#f59e0b",
+  "convoSystemPrompt": "You are the job scheduling agent. You manage job creation, execution scheduling, pause/resume, and status tracking.",
+  "profile": {
+    "displayName": "Job Scheduler",
+    "description": "scheduler — Job Scheduling Platform. Create, manage, and monitor scheduled jobs with BPMN-driven orchestration.",
+    "avatar": "⏰",
+    "isBot": true,
+    "agentType": "autonomous",
+    "operator": "amanomibashira",
+    "capabilities": ["createJob", "getJob", "updateJob", "deleteJob", "listJobs", "pauseJob", "resumeJob", "jobStatus"],
+    "protocols": ["xrpc", "mcp"]
+  },
+  "governance": {
+    "raci": "responsible",
+    "classification": "public"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "com.etzhayyim.apps.scheduler.job"
+      ]
+    }
+  }
+}

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                  xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+                  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+                  targetNamespace="http://bpmn.io/schema/bpmn">
+
+  <!-- createJob -->
+  <bpmn:process id="scheduler-create-job" name="Scheduler Create Job" isExecutable="true">
+    <bpmn:startEvent id="start-create-job"/>
+    <bpmn:sequenceFlow id="sf-cj-1" sourceRef="start-create-job" targetRef="task-create-job"/>
+    <bpmn:serviceTask id="task-create-job" name="Create Job">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="com.etzhayyim.apps.scheduler.createJob"/>
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="sf-cj-2" sourceRef="task-create-job" targetRef="end-create-job"/>
+    <bpmn:endEvent id="end-create-job"/>
+  </bpmn:process>
+
+  <!-- getJob -->
+  <bpmn:process id="scheduler-get-job" name="Scheduler Get Job" isExecutable="true">
+    <bpmn:startEvent id="start-get-job"/>
+    <bpmn:sequenceFlow id="sf-gj-1" sourceRef="start-get-job" targetRef="task-get-job"/>
+    <bpmn:serviceTask id="task-get-job" name="Get Job">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="com.etzhayyim.apps.scheduler.getJob"/>
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="sf-gj-2" sourceRef="task-get-job" targetRef="end-get-job"/>
+    <bpmn:endEvent id="end-get-job"/>
+  </bpmn:process>
+
+  <!-- updateJob -->
+  <bpmn:process id="scheduler-update-job" name="Scheduler Update Job" isExecutable="true">
+    <bpmn:startEvent id="start-update-job"/>
+    <bpmn:sequenceFlow id="sf-uj-1" sourceRef="start-update-job" targetRef="task-update-job"/>
+    <bpmn:serviceTask id="task-update-job" name="Update Job">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="com.etzhayyim.apps.scheduler.updateJob"/>
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="sf-uj-2" sourceRef="task-update-job" targetRef="end-update-job"/>
+    <bpmn:endEvent id="end-update-job"/>
+  </bpmn:process>
+
+  <!-- deleteJob -->
+  <bpmn:process id="scheduler-delete-job" name="Scheduler Delete Job" isExecutable="true">
+    <bpmn:startEvent id="start-delete-job"/>
+    <bpmn:sequenceFlow id="sf-dj-1" sourceRef="start-delete-job" targetRef="task-delete-job"/>
+    <bpmn:serviceTask id="task-delete-job" name="Delete Job">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="com.etzhayyim.apps.scheduler.deleteJob"/>
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="sf-dj-2" sourceRef="task-delete-job" targetRef="end-delete-job"/>
+    <bpmn:endEvent id="end-delete-job"/>
+  </bpmn:process>
+
+  <!-- listJobs -->
+  <bpmn:process id="scheduler-list-jobs" name="Scheduler List Jobs" isExecutable="true">
+    <bpmn:startEvent id="start-list-jobs"/>
+    <bpmn:sequenceFlow id="sf-lj-1" sourceRef="start-list-jobs" targetRef="task-list-jobs"/>
+    <bpmn:serviceTask id="task-list-jobs" name="List Jobs">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="com.etzhayyim.apps.scheduler.listJobs"/>
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="sf-lj-2" sourceRef="task-list-jobs" targetRef="end-list-jobs"/>
+    <bpmn:endEvent id="end-list-jobs"/>
+  </bpmn:process>
+
+  <!-- pauseJob -->
+  <bpmn:process id="scheduler-pause-job" name="Scheduler Pause Job" isExecutable="true">
+    <bpmn:startEvent id="start-pause-job"/>
+    <bpmn:sequenceFlow id="sf-pj-1" sourceRef="start-pause-job" targetRef="task-pause-job"/>
+    <bpmn:serviceTask id="task-pause-job" name="Pause Job">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="com.etzhayyim.apps.scheduler.pauseJob"/>
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="sf-pj-2" sourceRef="task-pause-job" targetRef="end-pause-job"/>
+    <bpmn:endEvent id="end-pause-job"/>
+  </bpmn:process>
+
+  <!-- resumeJob -->
+  <bpmn:process id="scheduler-resume-job" name="Scheduler Resume Job" isExecutable="true">
+    <bpmn:startEvent id="start-resume-job"/>
+    <bpmn:sequenceFlow id="sf-rsj-1" sourceRef="start-resume-job" targetRef="task-resume-job"/>
+    <bpmn:serviceTask id="task-resume-job" name="Resume Job">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="com.etzhayyim.apps.scheduler.resumeJob"/>
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="sf-rsj-2" sourceRef="task-resume-job" targetRef="end-resume-job"/>
+    <bpmn:endEvent id="end-resume-job"/>
+  </bpmn:process>
+
+  <!-- jobStatus -->
+  <bpmn:process id="scheduler-job-status" name="Scheduler Job Status" isExecutable="true">
+    <bpmn:startEvent id="start-job-status"/>
+    <bpmn:sequenceFlow id="sf-js-1" sourceRef="start-job-status" targetRef="task-job-status"/>
+    <bpmn:serviceTask id="task-job-status" name="Job Status">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="com.etzhayyim.apps.scheduler.jobStatus"/>
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="sf-js-2" sourceRef="task-job-status" targetRef="end-job-status"/>
+    <bpmn:endEvent id="end-job-status"/>
+  </bpmn:process>
+
+</bpmn:definitions>

@@ -1,0 +1,1 @@
+{:schema "etzhayyim.migration/v1" :source {:repository "etzhayyim/root" :revision "c8aeb6dd50bd5eb70849e01f58df8c1e90598430" :path "60-apps/etzhayyim-project-scheduler" :tree "106c976b5f227f69dc72ac8f1b8ae3163d0792da" :tracked-files 28 :bytes 68068} :destination {:repository "etzhayyim/com-etzhayyim-app-scheduler"} :identity {:allowed-additions ["README.edn" "migration.edn"]}}

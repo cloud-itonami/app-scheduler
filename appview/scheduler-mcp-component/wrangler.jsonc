@@ -1,0 +1,43 @@
+{
+  "name": "kotodama-sc3dul3r",
+  "main": "svelte/.svelte-kit/cloudflare/_worker.js",
+  "compatibility_date": "2025-03-17",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "nodejs_als"
+  ],
+  "vars": {
+    "APP_CAPABILITIES": "[\"createJob\",\"getJob\",\"updateJob\",\"deleteJob\",\"listJobs\",\"pauseJob\",\"resumeJob\",\"jobStatus\"]",
+    "APP_DESCRIPTION": "scheduler — Job Scheduling Platform. Create, manage, and monitor scheduled jobs with BPMN-driven orchestration.",
+    "APP_DISPLAY_NAME": "Job Scheduler",
+    "APP_FRAMEWORK": "sveltekit-edge-bff",
+    "APP_NANOID": "sc3dul3r",
+    "APP_PERFORMER_TYPE": "service",
+    "APP_UI_TYPE": "yoro",
+    "AGENTGATEWAY_MCP_ROUTER_URL": "https://mcp.etzhayyim.com/xrpc/com.etzhayyim.mcp.message"
+  },
+  "rules": [
+    {
+      "type": "CompiledWasm",
+      "globs": [
+        "**/*.wasm"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "sc3dul3r.etzhayyim.com/*",
+      "zone_name": "etzhayyim.ai"
+    },
+    {
+      "pattern": "scheduler.etzhayyim.com/*",
+      "zone_name": "etzhayyim.ai"
+    }
+  ],
+  "assets": {
+    "directory": "./svelte/.svelte-kit/cloudflare/client",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  }
+}

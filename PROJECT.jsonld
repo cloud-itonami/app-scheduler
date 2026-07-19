@@ -1,0 +1,222 @@
+{
+  "@context": [
+    "https://schema.org/",
+    {
+      "etzhayyim": "https://etzhayyim.com/schemas/",
+      "dodaf": "http://dodcio.defense.gov/Library/DoDAF.aspx#"
+    }
+  ],
+  "@type": "SoftwareApplication",
+  "@id": "urn:etzhayyim:project:etzhayyim-project-scheduler",
+  "name": "etzhayyim-project-scheduler",
+  "identifier": "etzhayyim-project-scheduler",
+  "description": "Goal/visionに基づき、プロジェクトリソース制約内で自律的にWorkflow計画を立てる SpinApp MCP オーケストレータ。",
+  "url": "https://scheduler.etzhayyim.com",
+  "applicationCategory": "Productivity",
+  "operatingSystem": "Kubernetes",
+  "codeRepository": "https://github.com/etzhayyim/etzhayyim-apps-etzhayyim",
+  "author": {
+    "@type": "Organization",
+    "name": "etzhayyim",
+    "url": "https://etzhayyim.ai"
+  },
+  "component": [
+    {
+      "@type": "WebAPI",
+      "name": "scheduler-mcp-component",
+      "description": "Resource-aware AI workflow scheduler and actor auction coordinator",
+      "url": "https://5dcfvsbd.etzhayyim.com/api/mcp",
+      "programmingLanguage": "Go",
+      "applicationCategory": "Backend",
+      "runtimePlatform": "SpinApp (TinyGo)",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "nanoid",
+          "value": "5dcfvsbd"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "protocol",
+          "value": "MCP JSON-RPC 2.0 / gRPC bridge"
+        }
+      ]
+    }
+  ],
+  "etzhayyim:resourceBoundary": "project",
+  "etzhayyim:capability": [
+    "Goal-based planning",
+    "Thread scheduling and escalation",
+    "Blocker detection and mitigation",
+    "Capability-aware actor auction orchestration"
+  ],
+  "etzhayyim:resourceModel": {
+    "computeResources": [
+      "storage",
+      "cpu",
+      "gpu",
+      "memory"
+    ],
+    "extendedResources": [
+      "time",
+      "duration",
+      "contracts",
+      "relationships",
+      "rights",
+      "equipment",
+      "energy",
+      "focus"
+    ]
+  },
+  "etzhayyim:dodafMapping": {
+    "CV-1": "Scheduler capabilities for execution planning",
+    "OV-5b": "Activity orchestration and dependency management",
+    "PV-1": "Plan → Execute → Evaluate loop"
+  },
+  "rdfUnifiedDocuments": {
+    "@type": "Dataset",
+    "name": "Unified top-level RDF/JSON-LD documents",
+    "description": "Consolidated from project top-level *.jsonld files except PROJECT.jsonld.",
+    "documents": [
+      {
+        "fileName": "capabilities.jsonld",
+        "content": {
+          "@context": [
+            "https://etzhayyim.com/contexts/capabilities.jsonld",
+            {
+              "dodaf": "http://dodcio.defense.gov/Library/DoDAF.aspx#",
+              "dct": "http://purl.org/dc/terms/"
+            }
+          ],
+          "id": "https://etzhayyim.com/projects/etzhayyim-project-scheduler/capabilities",
+          "type": "dodaf:Capability",
+          "dct:title": "Scheduler Capability Catalog (CV-2)",
+          "capabilities": [
+            {
+              "id": "cap-thread-aggregation",
+              "name": "Unified Thread Aggregation (C1)",
+              "description": "Aggregate communication threads across channels (email, Slack, messaging) into a unified inbox with AI classification."
+            },
+            {
+              "id": "cap-wellbeing-scheduling",
+              "name": "Well-being-Aware Scheduling (C2)",
+              "description": "Schedule tasks based on user energy levels, focus scores, stress levels, and protected time blocks."
+            },
+            {
+              "id": "cap-auto-pilot",
+              "name": "Auto-Pilot Responses (C3)",
+              "description": "Template-based automatic responses for low-priority threads with configurable rules and approval workflows."
+            },
+            {
+              "id": "cap-energy-tracking",
+              "name": "Energy & Focus Tracking (C4)",
+              "description": "Monitor and optimize user energy patterns, peak hours, and focus quality with trend analysis."
+            },
+            {
+              "id": "cap-task-optimization",
+              "name": "AI Task Optimization (C5)",
+              "description": "Optimize task ordering based on energy cost, deadlines, context switching overhead, and well-being constraints."
+            },
+            {
+              "id": "cap-spam-detection",
+              "name": "Spam Detection & Classification (C6)",
+              "description": "AI-powered spam scoring and category assignment for incoming threads."
+            }
+          ]
+        }
+      },
+      {
+        "fileName": "scheduler.jsonld",
+        "content": {
+          "@context": [
+            "https://schema.org/",
+            {
+              "etzhayyim": "https://etzhayyim.com/schemas/",
+              "capabilities": "etzhayyim:capabilities",
+              "survivalIndicators": "etzhayyim:survivalIndicators",
+              "scheduler": "etzhayyim:scheduler",
+              "milestones": "etzhayyim:milestones",
+              "blockers": "etzhayyim:blockers",
+              "dependsOn": {
+                "@id": "etzhayyim:dependsOn",
+                "@type": "@id"
+              },
+              "ingestKey": "etzhayyim:ingestKey",
+              "window": "etzhayyim:window",
+              "valueUpdatedAt": "etzhayyim:valueUpdatedAt"
+            }
+          ],
+          "@type": "CreativeWork",
+          "name": "etzhayyim-project-scheduler Scheduler",
+          "identifier": "etzhayyim-project-scheduler/scheduler",
+          "description": "Project schedule (milestones) and blockers.",
+          "dateCreated": "2026-02-15T04:25:26+00:00",
+          "dateModified": "2026-02-15T14:05:52Z",
+          "milestones": [
+            {
+              "@type": "CreativeWork",
+              "name": "Deploy scheduler via GitOps",
+              "description": "Deploy scheduler to Kubernetes using the GitOps pipeline and confirm the service is reachable.",
+              "dueDate": "2026-02-20",
+              "status": "Planned",
+              "exitCriteria": [
+                "Scheduler deployment applied by GitOps controller",
+                "SpinApp running with scheduler service",
+                "Basic health check confirms scheduler.etzhayyim.com responds"
+              ]
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "Persistent state with PostgreSQL statestore",
+              "description": "Implement and verify persistent state via PostgreSQL statestore for scheduler tasks and metadata.",
+              "dueDate": "2026-02-27",
+              "status": "Planned",
+              "dependsOn": [
+                "Deploy scheduler via GitOps"
+              ],
+              "exitCriteria": [
+                "PostgreSQL state store component configured",
+                "Scheduler reads/writes state via performer/rdbms",
+                "Data survives pod restart"
+              ]
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "Message stream pub/sub integration",
+              "description": "Enable event-driven scheduling via natad gRPC message stream.",
+              "dueDate": "2026-03-05",
+              "status": "Planned",
+              "dependsOn": [
+                "Persistent state with PostgreSQL statestore"
+              ],
+              "exitCriteria": [
+                "Message stream pubsub configured",
+                "Scheduler publishes schedule events",
+                "Consumer job triggers verified end-to-end"
+              ]
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "Deploy scheduler to Kubernetes with GitOps",
+              "status": "Planned",
+              "dueDate": "2026-02-22"
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "Implement persistent state via PostgreSQL statestore",
+              "status": "Planned",
+              "dueDate": "2026-03-01"
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "Add message stream pub/sub for event-driven scheduling",
+              "status": "Planned",
+              "dueDate": "2026-03-08"
+            }
+          ],
+          "blockers": []
+        }
+      }
+    ]
+  }
+}
