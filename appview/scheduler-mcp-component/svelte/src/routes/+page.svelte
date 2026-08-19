@@ -4,11 +4,11 @@
   "project": "etzhayyim-project-scheduler",
   "name": "scheduler-mcp-component",
   "kind": "appview",
-  "routeCount": 0,
-  "routes": [],
-  "vars": [],
+  "routeCount": 2,
+  "routes": ["sc3dul3r.etzhayyim.com/*","scheduler.etzhayyim.com/*"],
+  "vars": ["AGENTGATEWAY_MCP_ROUTER_URL","APP_CAPABILITIES","APP_DESCRIPTION","APP_DISPLAY_NAME","APP_FRAMEWORK","APP_NANOID","APP_PERFORMER_TYPE","APP_UI_TYPE"],
   "xrpc": true,
-  "relativePath": "60-apps/etzhayyim-project-scheduler/appview/scheduler-mcp-component/svelte/src/routes/+page.svelte"
+  "relativePath": "appview/scheduler-mcp-component/svelte/src/routes/+page.svelte"
 };
 </script>
 
