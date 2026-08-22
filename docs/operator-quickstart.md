@@ -115,7 +115,8 @@ If this fails with `EALLOWSCRIPTS`, read [the note below](#a-note-on-npm) — th
 fix is a flag, not a different machine.
 
 The repo has no `.gitignore`, so after this step `git status` shows
-`kotoba/node_modules/` as untracked. That is expected; do not commit it.
+`kotoba/node_modules/` and `kotoba/package-lock.json` as untracked. That is
+expected; neither is committed here.
 
 ## 4. Run the suite
 
