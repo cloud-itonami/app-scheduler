@@ -1,8 +1,10 @@
 # Operator quickstart
 
-Every command below was walked on 2026-08-17 and the output pasted here is the
+Every command below was walked on 2026-08-17 and walked again on 2026-08-23
+from a clean checkout of the then-current `main`; the output pasted here is the
 output it produced. If a step does not reproduce, that is a finding — say so
-rather than adjusting the doc to match.
+rather than adjusting the doc to match. Where the two walks differed, both
+values are given and the reason is stated.
 
 One step needs npm and does not work under every `~/.npmrc`; see
 [a note on npm](#a-note-on-npm) before you start.
@@ -78,6 +80,14 @@ dependencies that ship no `dist/` and compile through a `prepare` script, so a
 cold install builds them from source. On this workstation (node v26.3.0, npm
 11.16.0) under load average ~35 it ran for several minutes and overran a
 400-second timeout more than once — if you wrap it in a timeout, give it room.
+On 2026-08-23 (same node/npm, load average ~20) it took **12m57s** wall clock
+and reported `added 135 packages` — against 76 on 2026-08-17. The cause of the
+difference was not isolated. What was checked: every git dependency in the tree
+is pinned by commit (the two direct ones, and the six `kotoba-lang/*` ones that
+`@etzhayyim/sdk` pulls in), so the movement is in the `^`-ranged npm
+dependencies underneath them (`@atproto/*`, `@noble/*`, `viem`, …) or in how the
+earlier count was taken. Do not read either number as the contract; the four
+direct dependencies below are, and they did not move.
 
 There are four direct dependencies:
 
@@ -90,8 +100,12 @@ npm ls --depth=0
 +-- @etzhayyim/sdk-mock@0.1.0 (git+ssh://git@github.com/etzhayyim/com-etzhayyim-sdk-mock.git#c857ff9be5310bf433bfe1e8d3c0f677e213d667)
 +-- @etzhayyim/sdk@0.1.0-alpha (git+ssh://git@github.com/etzhayyim/com-etzhayyim-sdk.git#12314a0cc5ac2feb49dd9789d5c002398acb6988)
 +-- typescript@5.9.3
-`-- vitest@4.1.10
+`-- vitest@4.1.11
 ```
+
+(`vitest` and `typescript` are declared with `^`, so the patch version here
+floats: 4.1.10 on 2026-08-17, 4.1.11 on 2026-08-23. The two `@etzhayyim` commits
+are the ones in `package.json` and do not move.)
 
 `package.json` pins both git dependencies over `git+https`; npm reports them
 back as `git+ssh`. Which transport is actually used was not tested here — this
@@ -99,6 +113,9 @@ machine has GitHub SSH configured, so a host without it may behave differently.
 
 If this fails with `EALLOWSCRIPTS`, read [the note below](#a-note-on-npm) — the
 fix is a flag, not a different machine.
+
+The repo has no `.gitignore`, so after this step `git status` shows
+`kotoba/node_modules/` as untracked. That is expected; do not commit it.
 
 ## 4. Run the suite
 
@@ -173,7 +190,7 @@ Measured 2026-08-17 on one machine, node v26.3.0 / **npm 11.16.0** throughout:
 |---|---|
 | `~/.npmrc` as-is (contains `allow-scripts[]=@anthropic-ai/claude-code`) | `EALLOWSCRIPTS` |
 | minimal file containing only `strict-ssl=false` **plus** `allow-scripts[]=…` | `EALLOWSCRIPTS` |
-| minimal file containing only `strict-ssl=false` | installs, 76 packages, suite green |
+| minimal file containing only `strict-ssl=false` | installs (76 packages on 08-17, 135 on 08-23 — see §3), suite green |
 
 So the workaround is a flag:
 

@@ -29,7 +29,8 @@ ADR-2606011400 (Consensys c-split), ADR-2605172400 (3-axis), ADR-2605172000
 
 ## Layout
 
-Thirty tracked files, two planes that do not currently meet:
+Thirty-two tracked files (thirty, plus this README and the quickstart), two
+planes that do not currently meet:
 
 ```
 kotoba/                            reference implementation of the data model (TypeScript)
@@ -47,8 +48,8 @@ bpmn/scheduler.bpmn                BPMN orchestration
 
 This repo was extracted from `etzhayyim/root` (`60-apps/etzhayyim-project-scheduler`,
 see `migration.edn`) and **several files still describe the pre-extraction
-layout.** All of the following were measured on 2026-08-17 and are reproducible
-from `docs/operator-quickstart.md`:
+layout.** All of the following were measured on 2026-08-17, re-walked unchanged on
+2026-08-23, and are reproducible from `docs/operator-quickstart.md`:
 
 | What a reader would conclude | What the tree actually contains |
 |---|---|
