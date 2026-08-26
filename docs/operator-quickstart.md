@@ -216,9 +216,11 @@ the nested install, not the outer one.
 Deliberately, because none of it was walked:
 
 - **The dispatcher.** `appview/scheduler-mcp-component` is a Cloudflare Worker
-  that proxies to `DISPATCHER_URL`; running it needs the SvelteKit build and a
-  live AgentGateway MCP endpoint. Nothing above starts it, and no step here
-  proves `/health` responds.
+  that proxies to `DISPATCHER_URL`; running it needs a live AgentGateway MCP
+  endpoint. Nothing above starts it, and no step here proves `/health`
+  responds. (Before the 2026-08-26 Svelte→ClojureScript frontend migration,
+  this line also named "the SvelteKit build" as a prerequisite — that build no
+  longer exists; see `README.md`.)
 - **`CLAUDE.md`'s build steps.** They `cd` into `wasm/…` paths that do not exist
   in this repo (see `README.md`), so they cannot be run as written.
 - **Anything against a real PDS.** Every step above runs against
