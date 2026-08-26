@@ -40,9 +40,24 @@ kotoba/                            reference implementation of the data model (T
   test/scheduler.test.ts           5 tests, green (see docs/operator-quickstart.md)
 appview/scheduler-mcp-component/   thin-edge dispatcher (Cloudflare Worker)
   src/app.ts                       /health + /xrpc/com.etzhayyim.apps.scheduler.*
-  svelte/                          SvelteKit UI
+  cljs/                            ClojureScript UI (reagent + re-frame + jp-go-dds),
+                                    served as static assets — see cljs/ for the build
 bpmn/scheduler.bpmn                BPMN orchestration
 ```
+
+**2026-08-26: the frontend was migrated from SvelteKit to ClojureScript**
+(reagent + re-frame + `jp-go-dds`, ADR-2608260900). `appview/scheduler-mcp-component/svelte/`
+is gone; the ported page lives at `appview/scheduler-mcp-component/cljs/src/scheduler/app.cljs`
+and is a faithful, content-preserving port of the deleted `svelte/src/routes/+page.svelte` —
+no scheduling behavior was added or removed. One file under the deleted `svelte/` tree was
+backend, not frontend, and does not fit that story cleanly:
+`svelte/src/routes/xrpc/[...path]/+server.ts` was a SvelteKit server route that proxied
+`/xrpc/<nsid>` to `AGENTGATEWAY_MCP_ROUTER_URL`. It was moved (unmodified) to
+`appview/scheduler-mcp-component/src/xrpc-agentgateway-proxy.ts`, but it cannot run there —
+it depended on the SvelteKit build, which no longer exists, and `wrangler.jsonc`'s `main` (which
+used to point at that build) has been dropped rather than repointed, since `src/app.ts` does not
+call `env.ASSETS.fetch()`. Whether/how to revive that proxy is a product decision this migration
+does not make; see the header comment on that file.
 
 ## Read this before trusting the rest of the tree
 
