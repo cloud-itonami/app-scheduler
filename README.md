@@ -47,7 +47,7 @@ bpmn/scheduler.bpmn                BPMN orchestration
 
 **2026-08-26: the frontend was migrated from SvelteKit to ClojureScript**
 (reagent + re-frame + `jp-go-dds`, ADR-2608260900). `appview/scheduler-mcp-component/svelte/`
-is gone; the ported page lives at `appview/scheduler-mcp-component/cljs/src/scheduler/app.cljs`
+is gone; the ported page lives at `appview/scheduler-mcp-component/cljs/src/scheduler/app.cljk`
 and is a faithful, content-preserving port of the deleted `svelte/src/routes/+page.svelte` —
 no scheduling behavior was added or removed. One file under the deleted `svelte/` tree was
 backend, not frontend, and does not fit that story cleanly:

@@ -20,7 +20,7 @@
            @(rf/subscribe [:routes])))
     (is (= 8 (count @(rf/subscribe [:vars]))))
     (is (true? @(rf/subscribe [:xrpc?])))
-    (is (= "appview/scheduler-mcp-component/cljs/src/scheduler/app.cljs"
+    (is (= "appview/scheduler-mcp-component/cljs/src/scheduler/app.cljk"
            @(rf/subscribe [:relative-path])))))
 
 (deftest vars-sub-carries-every-original-binding-name

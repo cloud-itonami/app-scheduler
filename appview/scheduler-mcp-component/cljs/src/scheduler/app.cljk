@@ -44,7 +44,7 @@
           "APP_DISPLAY_NAME" "APP_FRAMEWORK" "APP_NANOID" "APP_PERFORMER_TYPE"
           "APP_UI_TYPE"]
    :xrpc? true
-   :relative-path "appview/scheduler-mcp-component/cljs/src/scheduler/app.cljs"})
+   :relative-path "appview/scheduler-mcp-component/cljs/src/scheduler/app.cljk"})
 
 (rf/reg-event-db
  :initialize-db
