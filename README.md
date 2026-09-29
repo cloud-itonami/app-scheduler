@@ -68,8 +68,8 @@ layout.** All of the following were measured on 2026-08-17, re-walked unchanged 
 
 | What a reader would conclude | What the tree actually contains |
 |---|---|
-| `CLAUDE.md` lists four components under `wasm/` | There is **no `wasm/` directory**. The only component present is `appview/scheduler-mcp-component`. `scheduler-cron-component`, `scheduler-performer-mcp-component` and `scheduler-ui-2w9k6q1m` are not in this repo |
-| `CLAUDE.md` build steps: `cd wasm/scheduler-cron-component && etzhayyim build` | That path does not exist, so the documented build cannot be run as written |
+| `AGENTS.md` lists four components under `wasm/` | There is **no `wasm/` directory**. The only component present is `appview/scheduler-mcp-component`. `scheduler-cron-component`, `scheduler-performer-mcp-component` and `scheduler-ui-2w9k6q1m` are not in this repo |
+| `AGENTS.md` build steps: `cd wasm/scheduler-cron-component && etzhayyim build` | That path does not exist, so the documented build cannot be run as written |
 | `PROJECT.jsonld` says `programmingLanguage: Go`, `runtimePlatform: SpinApp (TinyGo)` | Every source file here is TypeScript |
 | `PROJECT.jsonld` says `codeRepository: etzhayyim/etzhayyim-apps-etzhayyim` | This repo is `cloud-itonami/app-scheduler` |
 | `MIGRATION-TODO.md` says "appview wiring + `kotoba/` reference slice TBD" | `kotoba/` exists, is complete enough to test, and its suite is green |

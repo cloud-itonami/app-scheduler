@@ -221,7 +221,7 @@ Deliberately, because none of it was walked:
   responds. (Before the 2026-08-26 Svelte→ClojureScript frontend migration,
   this line also named "the SvelteKit build" as a prerequisite — that build no
   longer exists; see `README.md`.)
-- **`CLAUDE.md`'s build steps.** They `cd` into `wasm/…` paths that do not exist
+- **`AGENTS.md`'s build steps.** They `cd` into `wasm/…` paths that do not exist
   in this repo (see `README.md`), so they cannot be run as written.
 - **Anything against a real PDS.** Every step above runs against
   `@etzhayyim/sdk-mock`. No network substrate is contacted, and no real DID is
